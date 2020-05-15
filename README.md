@@ -1,8 +1,26 @@
 # NSX Edge graylog_content
 Graylog extractor for VMWare Firewall NSXedge
-The VMware firewall can log to syslog , where the real one message is capsuled in an JSON document as key : "text" 
 
-Extracted fields
+VMware NSX firewall can ship its log  via syslog protocol.
+
+A linux rsyslog server acts as gateway and sends logdata json formated  to kafka message queue system.  
+
+graylog fetch logs and extracts data, which are embedded in an JSON document.
+
+The contents_pack consists of the input with parameters for 
+
+#### Content_pack parameters
+
+| parameter    | default_value  |
+| ------------ | -------------- |
+| title        | nsxedge        |
+| zookeeper    | localhost:2181 |
+| topic_search | ^nsxedge$      |
+
+You can use extractor export below to upload in your environment.  Then you have to adjust the "source_field" in extractor "nsxedge_get_json".
+
+#### Extracted fields
+
 - reason
 - action
 - direction
@@ -13,20 +31,19 @@ Extracted fields
 - dstPort
 - flag
 
-
-**message** field  to parse:
+#### Sample message
 
     {"sddc_id":"037c42e3-c198-47c1-956c-1e5867210c02","text":"<99>2020-05-15T09:08:27.965Z ip-10-23-254-72.ap-southeast-1.compute.internal FIREWALL_PKTLOG: f2c65dd5 INET TERM 24642815 IN UDP 10.23.150.100\/53408->10.123.70.101\/53 1\/1 72\/103","timestamp":1.589533710199E12}
 
-##### Steps to extract
+#### Steps to extract
 
+1. nsxedge_get_json 
 
-- nsxedge_get_json
-- nsxegde_text_grok
-- timestamp_from_iso
-- nsxedge_message_grok
+2. nsxegde_text_grok
+3. timestamp_from_iso
+4. nsxedge_message_grok
 
-### Extractor
+##### Extractor to upload
 
 
 ```
