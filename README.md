@@ -1,4 +1,4 @@
-# NSX Edge graylog_content
+# NSX Edge Content pack
 Graylog extractor for VMWare Firewall NSXedge
 
 VMware NSX firewall can ship its log  via syslog protocol.
