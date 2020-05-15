@@ -19,6 +19,10 @@ The contents_pack consists of the input with parameters for
 
 You can use extractor export below to upload in your environment.  Then you have to adjust the "source_field" in extractor "nsxedge_get_json".
 
+In this setup graylog expects the whole NSX-Edge log in field : **message**, which is a JSON dokument.
+
+
+
 #### Extracted fields
 
 - reason
