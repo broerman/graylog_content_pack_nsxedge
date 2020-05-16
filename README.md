@@ -2,7 +2,8 @@
 Graylog extractor for VMWare Firewall NSXedge
 
 VMware NSX firewall can ship its log  via syslog protocol.
-A linux rsyslog server acts as gateway and sends logdata json formated to kafka message queue system.[ look here for an  examle ](https://github.com/broerman/rsyslog-kafkagelf-gateway) 
+A linux rsyslog server acts as gateway and sends logdata json formated to kafka message queue system.[look here for an  example](https://github.com/broerman/rsyslog-kafkagelf-gateway) 
+
 graylog fetch logs and extracts data, which are embedded in an JSON document.
 
 The contents_pack consists of the input with parameters for 
