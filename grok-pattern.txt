@@ -1,0 +1,2 @@
+NSXEDGE_SYSLOG	\<\d*\>.*(?<nsxedge_timestamp_iso>%{YEAR}-%{MONTHNUM}-%{MONTHDAY}[T ]%{HOUR}:?%{MINUTE}(?::?%{SECOND}))Z .* (?<nsxedge_message>INET.*)
+NSXEDGE_INET	INET %{NOTSPACE:reason} %{WORD:action} %{POSINT} %{WORD:direction}(?: %{POSINT})? (?<protocol>(TCP|UDP|PROTO \d+)) %{IP:srcIP}(?:/%{POSINT:srcPort})?->%{IP:dstIP}(?:/%{POSINT:dstPort})?(?: %{WORD:flag})?

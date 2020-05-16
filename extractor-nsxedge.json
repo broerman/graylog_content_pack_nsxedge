@@ -28,7 +28,7 @@
       "source_field": "nsxedge_text",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "\\<\\d*\\>1 (?<nsxedge_timestamp_iso>%{YEAR}-%{MONTHNUM}-%{MONTHDAY}[T ]%{HOUR}:?%{MINUTE}(?::?%{SECOND}))Z %{WORD} %{WORD} %{WORD} %{WORD} \\[.*\\] \\<\\d \\w*:\\w*\\>\\s*%{GREEDYDATA:nsxedge_message}",
+        "grok_pattern": "%{NSXEDGE_SYSLOG}",
         "named_captures_only": true
       },
       "condition_type": "none",
@@ -64,7 +64,7 @@
       "source_field": "nsxedge_message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "INET %{NOTSPACE:reason} %{WORD:action} %{POSINT} %{WORD:direction}(?: %{POSINT})? (?<protocol>(TCP|UDP|PROTO \\d+)) %{IP:srcIP}(?:/%{POSINT:srcPort})?->%{IP:dstIP}(?:/%{POSINT:dstPort})?(?: %{WORD:flag})?",
+        "grok_pattern": "%{NSXEDGE_INET}",
         "named_captures_only": true
       },
       "condition_type": "none",

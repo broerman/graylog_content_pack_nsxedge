@@ -35,12 +35,16 @@ In this setup graylog expects the whole NSX-Edge log in field : **message**, whi
 - flag
 
 #### Sample message
-
     {"sddc_id":"037c42e3-c198-47c1-956c-1e5867210c02","text":"<99>2020-05-15T09:08:27.965Z ip-10-23-254-72.ap-southeast-1.compute.internal FIREWALL_PKTLOG: f2c65dd5 INET TERM 24642815 IN UDP 10.23.150.100\/53408->10.123.70.101\/53 1\/1 72\/103","timestamp":1.589533710199E12}
 
 #### Steps to extract
 
 1. nsxedge_get_json 
+
+nsxedge_text fields:
+
+    <99>1 2020-05-03T16:55:50.820Z edge NSX 1681 FIREWALL [nsx@6876 comp="nsx-edge" subcomp="datapathd.firewallpkt" level="INFO"] <1 596be8c6421d4422:9f49ede698645afa> INET TERM PASS 17115424 OUT TCP 10.23.150.120/54585->10.10.160.171/443
+    <99>2020-05-16T08:08:12.974Z ip-10-23-254-72.ap-southeast-1.compute.internal FIREWALL_PKTLOG: f2c65dd5 INET match PASS 24414552 IN 71 UDP 10.123.13.171/61422->10.123.70.101/53
 
 2. nsxegde_text_grok
 3. timestamp_from_iso
